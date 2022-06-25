@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const userRoutes = require('./routes/api/usersRoutes');
+const userRoutes = require('./server/routes/api/usersRoutes');
 const app = express();
 
 //==========================
@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 //==========================
 // DB Config
 //==========================
-const db = require("./config/keys").mongoURI;
+const db = require("./server/config/keys").mongoURI;
 
 //==========================
 // Connect to MongoDB
@@ -38,7 +38,7 @@ app.use(passport.initialize());
 //==========================
 // Passport config
 //==========================
-require('./config/passport')(passport);
+require('./server/config/passport')(passport);
 
 //==========================
 // Routes
