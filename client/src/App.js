@@ -9,12 +9,11 @@ import Login from "./components/auth/Login";
 const App = () => {
   return (
     <Routes>
-      <div className="App">
-        <Navbar />
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-      </div>
+      <Route element={<Navbar/>} >
+        <Route exact path="/" element={Landing} />
+        <Route exact path="/register" element={Register} />
+        <Route exact path="/login" element={Login} />
+      </Route>
     </Routes>
   );
 }
