@@ -2,34 +2,24 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  const [state, setState] = useState({
-    name: "",
-    email: "",
-    password: "",
-    password2: "",
-    errors: {}
-  });
-
-  const onChange = (e) => {
-    e.preventDefault();
-
-    setState({ [e.target.id]: e.target.value });
-  };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [errors, setErrors] = useState({});
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const newUser = {
-      name: state.name,
-      email: state.email,
-      password: state.password,
-      password2: state.password2
+      name: name,
+      email: email,
+      password: password,
+      password2: password2
     };
 
     console.log(newUser);
   };
-
-  const { errors } = state;
 
   return(
     <div className="container">
@@ -49,41 +39,40 @@ const Register = () => {
           <form noValidate onSubmit={onSubmit}>
             <div className="input-field col s12">
               <input
-                onChange={onChange}
-                value={state.name}
-                error={errors}
-                id="name"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                error={errors.name}
                 type="text"
               />
               <label htmlFor="name">Name</label>
             </div>
             <div className="input-field col s12">
               <input
-                onChange={onChange}
-                value={state.email}
-                error={errors}
-                id="name"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                error={errors.email}
+                id="email"
                 type="text"
               />
               <label htmlFor="email">Email</label>
             </div>
             <div className="input-field col s12">
               <input
-                onChange={onChange}
-                value={state.password}
-                error={errors}
-                id="name"
-                type="text"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                error={errors.password}
+                id="password"
+                type="password"
               />
               <label htmlFor="password">Password</label>
             </div>
             <div className="input-field col s12">
               <input
-                onChange={onChange}
-                value={state.password2}
-                error={errors}
-                id="name"
-                type="text"
+                onChange={(e) => setPassword2(e.target.value)}
+                value={password2}
+                error={errors.password2}
+                id="password2"
+                type="password"
               />
               <label htmlFor="password2">Confirm Password</label>
             </div>
