@@ -2,29 +2,21 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const [state, setState] = useState({
-    email: "",
-    password: "",
-    errors: {}
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
 
-  const onChange = (e) => {
-    // console.log({[e.target.id]: e.target.value});
-   setState({ [e.target.id]: e.target.value } );
-  }
   const onSubmit = (e) => {
     e.preventDefault();
 
     const userData = {
-      email: state.email,
-      password: state.password,
-      errors: state.errors
+      email: email,
+      password: password,
+      errors: errors
     };
 
     console.log(userData);
   }
-
-  const { errors } = state;
 
   return(
     <div className="container">
@@ -44,8 +36,8 @@ const Login = () => {
           <form noValidate onSubmit={onSubmit}>
             <div className="input-field col s12">
               <input
-                onChange={onChange}
-                value={state.email}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 error={errors.email}
                 id="email"
                 type="email"
@@ -54,8 +46,8 @@ const Login = () => {
             </div>
             <div className="input-field col s12">
               <input
-                onChange={onChange}
-                value={state.password}
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 error={errors.password}
                 id="password"
                 type="password"
